@@ -29,7 +29,7 @@
     <div class="left-side blue-button"><div class="blue-button"><a href="/">На главную</a></div><div class="blue-button"><a href="./students_list.html">Назад</a></div></div>
     <div class="center">
       <b>Для создания студента заполните все поля и нажмите кнопку "Создать".</b>
-      <form action="student-create" method="post">
+      <form action="/student-create" method="post">
         <div class="form">
           <p>Фамилия <input name="surname" type="text" size="40"></p>
           <p>Имя <input name="name" type="text" size="40"></p>

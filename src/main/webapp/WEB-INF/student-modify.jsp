@@ -32,15 +32,15 @@
             <b>Для модификации введите новые значения и нажмите кнопку "Применить".</b>
             <form action="student-modify" method="post">
                 <form action="/student-modify" method="post">
-                    <input type="hidden" value="${student.id}" name="id">
+                    <input type="hidden" value="${s.id}" name="id">
                 </form>
                 <div class="form">
-                    <p>Фамилия <input value="${student.surname}" name="surname" type="text" size="40"></p>
-                    <p>Имя <input value="${student.name}" name="name" type="text" size="40"></p>
-                    <p>Группа <input value="${student.group}" name="group" type="text" size="40"></p>
+                    <p>Фамилия <input value="${s.surname}" name="surname" type="text" size="40"></p>
+                    <p>Имя <input value="${s.name}" name="name" type="text" size="40"></p>
+                    <p>Группа <input value="${s.group}" name="group" type="text" size="40"></p>
                     <p>Дата поступления <input value="<td><f:formatDate value="${s.date}" pattern="dd/MM/yyyy"/></td>" id="datepicker" name="date" type="text" size="40"></p>
                 </div>
-                <div><input type="submit" value="Создать" class="grey-button"/><div style="width: 299px;"></div></div>
+                <div><input type="submit" value="Применить" class="grey-button"/><div style="width: 299px;"></div></div>
 
             </form>
 

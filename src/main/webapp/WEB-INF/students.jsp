@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../resourses/css/styles.css">
-    <script src="../resourses/js/functions.js?v=121"></script>
+    <script src="../resourses/js/functions.js"></script>
     <title>Система управления студентами и их успеваемостью</title>
 </head>
 
@@ -53,7 +53,7 @@
 
                         <c:forEach items="${students}" var="s">
                         <tr>
-                            <td><input type="checkbox" value="%{s.id}" name="idStud"></td>
+                            <td><input type="checkbox" value="${s.id}" name="idStud"></td>
                             <td>${s.surname}</td>
                             <td>${s.name}</td>
                             <td>${s.group}</td>

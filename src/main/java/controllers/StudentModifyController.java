@@ -34,10 +34,12 @@ public class StudentModifyController extends HttpServlet {
     String group = req.getParameter("group");
     String dateFromUser = req.getParameter("id");
 
+    DBServices services = new DBServices();
+
         DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Date date;
         try {
-            dateFromUser = format.parse(dateFromUser;
+            date = format.parse(dateFromUser);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -45,10 +47,8 @@ public class StudentModifyController extends HttpServlet {
         Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateToDataBase = formatter.format(date);
 
-        DBServices services = new DBServices();
         services.modifyStudent(id, surname, name, group, dateToDataBase);
         resp.sendRedirect("/students");
     }
     }
 
-}
