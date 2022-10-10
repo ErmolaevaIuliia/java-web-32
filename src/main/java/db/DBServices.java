@@ -145,12 +145,48 @@ public class DBServices implements IDBServices{
 
     @Override
     public List<Term> getAllActiveTerms() {
-        return null;
+        ArrayList<Term> terms = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from term where status = '1'");
+
+            while (rs.next()) {
+                Term term = new Term();
+                term.setId(rs.getInt("id"));
+                term.setTerm(rs.getString("term"));
+                term.setDuration(rs.getString("duration"));
+                terms.add(term);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return terms;
     }
+
 
     @Override
     public List<Subject> getSubjectsByTerm(String idTerm) {
-        return null;
+        List<Subject> subjects = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM term_subject as ts\n" +
+                    "left join subject as s on ts.id_subject = s.id\n" +
+                    "where s.status = '1' and ts.id_subject = " + idTerm);
+
+            while (rs.next()) {
+                Subject subject = new Subject();
+                subject.setId(rs.getInt("id_subject"));
+                subject.setSubject(rs.getString("subject"));
+                subjects.add(subject);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return subjects;
     }
 
     @Override
@@ -160,6 +196,22 @@ public class DBServices implements IDBServices{
 
     @Override
     public Term getTermById(String id) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from term where status = '1' and id = "+ id);
+
+            while (rs.next()) {
+                Term term = new Term();
+                term.setId(rs.getInt("id"));
+                term.setTerm(rs.getString("term"));
+                term.setDuration(rs.getString("duration"));
+                return term;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

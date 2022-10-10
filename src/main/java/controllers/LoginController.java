@@ -23,13 +23,22 @@ public class LoginController extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
+        if(login == null || login.equals("") || password == null || password.equals("")){
+            req.setAttribute("Error","1");
+            req.getRequestDispatcher("WEB-INF/login.jsp").forward(req, resp);
+
+        }
+
         DBServices services = new DBServices();
 
         if(services.canLogin(login, password, role)){
-            req.getSession().setAttribute("isLogin", true);
+            req.getSession().setAttribute("isLogin", true); // отвечает за то, какую кнопку поккзыать
             req.getSession().setAttribute("role", role);
             req.getSession().setAttribute("login", login);
             resp.sendRedirect("/");
+        } else {
+            req.setAttribute("Error","2");
+            req.getRequestDispatcher("WEB-INF/login.jsp").forward(req, resp);
         }
     }
 }

@@ -32,7 +32,7 @@
         <div class="center-title">
             <div id="left-button"><a href="/students">Студенты</a></div>
             <div id="center-button"><a href="./disciplines_list.html">Дисциплины</a></div>
-            <div id="right-button"><a href="./terms_list.html">Семестры</a></div>
+            <div id="right-button"><a href="/terms">Семестры</a></div>
         </div>
         <div class="right-side blue-button"><span></span></div>
     </div>

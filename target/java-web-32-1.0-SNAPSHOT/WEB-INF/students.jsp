@@ -31,10 +31,13 @@
                     </form>
                 </div>
             </div>
+
+            <c:if test="${role eq 1}">
             <div class="center-top-buttons">
                 <div><input type="submit" onclick="modifyStudent()" value="Модифицировать выбранного студента" class="grey-button-top"/></div>
                 <div><input type="submit" onclick="deleteStudents()" value="Удалить выбранных студентов..." class="grey-button-top"/></div>
             </div>
+            </c:if>
 
             <div><b class="text">Список студентов</b></div>
             <div>

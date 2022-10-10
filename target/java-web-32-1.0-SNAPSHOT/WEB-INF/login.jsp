@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +33,12 @@
             <div><input type="submit" value="Войти" class="grey-button-discipline"/><div style="width: 299px;"></div></div>
 
         </form>
+        <c:if test="${Error eq 1}">
+            <h4>Поля не должны быть пустыми!</h4>
+        </c:if>
+        <c:if test="${Error eq 2}">
+            <h4>Неверно ввели логин или пароль, или неверно выбрана роль</h4>
+        </c:if>
     </div>
     <div class="right-side blue-button"><span></span></div>
 </div>
